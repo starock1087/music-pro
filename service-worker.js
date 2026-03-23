@@ -20,3 +20,21 @@ if ('mediaSession' in navigator) {
   navigator.mediaSession.setActionHandler('nexttrack', () => next());
   navigator.mediaSession.setActionHandler('previoustrack', () => prev());
 }
+vfunction render(){
+  playlist.innerHTML = "";
+  songs.forEach((s, i) => {
+    const li = document.createElement("li");
+    li.textContent = s.name;
+
+    if(i === index) li.classList.add("active");
+
+    li.onclick = () => {
+      index = i;
+      loadSong();
+      play();
+      render();
+    };
+
+    playlist.appendChild(li);
+  });
+}
