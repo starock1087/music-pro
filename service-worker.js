@@ -38,3 +38,10 @@ vfunction render(){
     playlist.appendChild(li);
   });
 }
+function clearPlaylist(){
+  songs = [];
+  localStorage.removeItem("songs");
+  playlist.innerHTML = "";
+  audio.src = "";
+  title.textContent = "Sin música";
+}
